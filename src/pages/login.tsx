@@ -21,22 +21,26 @@ export default function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
+    <div className="flex h-screen bg-gray-100">
       <img
         src={imageHome}
         alt="Imagem de contabilidade"
-        className="w-96 h-96"
+        className="w-2/3 h-full object-cover"
       />
-      <div className="p-8 bg-white rounded-lg shadow-lg w-96">
+      <div className="flex flex-col items-center justify-center p-8 bg-white rounded-lg shadow-lg w-1/3">
         <img
           src={logo}
           alt="Freelance Planner Logo"
-          className="w-24 h-24 mb-4"
+          className="w-36 h-36 rounded-full mb-4"
         />
         <h1 className="font-title text-2xl font-bold text-center text-blue-600 mb-4">
           Bem-vindo ao Freelance Planner
         </h1>
-        <p className="font-text text-center text-gray-600 mb-6">
+        <p className="font-text mb-6 text-center">
+          Uma aplicação web que permite gerenciar projetos, tarefas e finanças
+          de forma integrada.
+        </p>
+        <p className="font-text text-center text-gray-600 mb-3">
           Faça login para acessar sua conta
         </p>
         <button
