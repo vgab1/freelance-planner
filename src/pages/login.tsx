@@ -25,9 +25,9 @@ export default function Login() {
       <img
         src={imageHome}
         alt="Imagem de contabilidade"
-        className="w-2/3 h-full object-cover"
+        className="hidden lg:block w-2/3 h-full object-cover"
       />
-      <div className="flex flex-col items-center justify-center p-8 bg-white rounded-lg shadow-lg w-1/3">
+      <div className="flex flex-col items-center justify-center p-8 bg-white rounded-lg shadow-lg w-full lg:w-1/2">
         <img
           src={logo}
           alt="Freelance Planner Logo"
@@ -45,7 +45,7 @@ export default function Login() {
         </p>
         <button
           onClick={handleLogin}
-          className="font-button flex items-center justify-center w-full py-2 px-4 bg-white text-blue-600 rounded-lg outline"
+          className="font-button flex items-center justify-center w-full py-2 px-4 bg-white text-blue-600 rounded-lg outline hover:bg-slate-100"
         >
           <FcGoogle className=" w-5 h-5 mr-2" />
           Login com Google
