@@ -1,22 +1,26 @@
 import { signInWithGoogle } from "../firebase";
+
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import logo from "../assets/fp-logo.webp";
 import imageHome from "../assets/image-1.jpg";
 
+interface User {
+  displayName: string | null;
+}
 export default function Login() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
       const loggedInUser = await signInWithGoogle();
       setUser(loggedInUser);
-      console.log("Usuário logado:", loggedInUser.displayName);
+      console.log("Usuário logado:", user?.displayName);
       navigate("/dashboard");
     } catch (error) {
-      console.error("Erro ao fazer login:", error);
+      console.error("Erro ao fazer login com Google.", error);
     }
   };
 
@@ -33,15 +37,15 @@ export default function Login() {
           alt="Freelance Planner Logo"
           className="w-36 h-36 rounded-full mb-4"
         />
-        <h1 className="font-title text-2xl font-bold text-center text-blue-600 mb-4">
+        <h1 className="font-title text-2xl font-bold text-center text-blue-600 mb-3">
           Bem-vindo ao Freelance Planner
         </h1>
-        <p className="font-text mb-6 text-center">
+        <p className="font-text mb-5 text-center">
           Uma aplicação web que permite gerenciar projetos, tarefas e finanças
           de forma integrada.
         </p>
-        <p className="font-text text-center text-gray-600 mb-3">
-          Faça login para acessar sua conta
+        <p className="font-text font-bold text-center text-gray-600 mb-4">
+          Use a sua conta do Google para acessar.
         </p>
         <button
           onClick={handleLogin}
