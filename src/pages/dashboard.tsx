@@ -5,6 +5,7 @@ import TaskSummary from "../components/TaskSummary";
 import FinancialOverview from "../components/FinancialOverview";
 import DeadlineOverview from "../components/DeadlineOverview";
 import TarefaCard from "../components/TarefaCard";
+import TaskManager from "../components/TaskManager";
 
 interface Task {
   id: number;
@@ -24,12 +25,29 @@ interface FinancialData {
 
 export default function Dashboard() {
   const [loading, setLoading] = useState(true);
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([
+    { id: 1, name: "Concluir projeto X", status: "Pendente" },
+    { id: 2, name: "Revisar relatório", status: "Concluído" },
+  ]);
   const [financialData, setFinancialData] = useState<FinancialData | null>(
     null
   );
   const [deadlines, setDeadlines] = useState<Deadline[]>([]);
   const navigate = useNavigate();
+
+  const handleAddTask = (newTask: Task) => {
+    setTasks((prevTasks) => [...prevTasks, newTask]);
+  };
+
+  const handleEditTask = (updatedTask: Task) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) => (task.id === updatedTask.id ? updatedTask : task))
+    );
+  };
+
+  const handleDeleteTask = (taskId: number) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+  };
 
   useEffect(() => {
     async function fetchDashboardData() {
@@ -63,9 +81,15 @@ export default function Dashboard() {
           <p className="text-center text-gray-500">Carregando dados...</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <TaskManager
+              tasks={tasks}
+              onAdd={handleAddTask}
+              onEdit={handleEditTask}
+              onDelete={handleDeleteTask}
+            />
             <TaskSummary
               tasks={tasks}
-              onClick={() => handleRedirect("/tasks")}
+              onClick={() => handleRedirect("/TaskManager")}
             />
             <TarefaCard tasks={tasks} />
             <FinancialOverview
