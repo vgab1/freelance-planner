@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, logout } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import ConfirmationModal from "../components/ConfirmationModal";
 
 interface User {
   photoURL: string | null;
@@ -9,6 +10,7 @@ interface User {
 }
 
 export default function DashboardHeader() {
+  const [showModal, setShowModal] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
 
@@ -24,13 +26,27 @@ export default function DashboardHeader() {
     return () => unsubscribe();
   }, [navigate]);
 
-  const handleLogout = async () => {
-    try {
-      await logout();
-      navigate("/");
-    } catch (error) {
-      console.error("Erro ao deslogar:", error);
-    }
+  // const handleLogout = async () => {
+  //   try {
+  //     await logout();
+  //     navigate("/");
+  //   } catch (error) {
+  //     console.error("Erro ao deslogar:", error);
+  //   }
+  // };
+
+  const handleLogoutClick = () => {
+    setShowModal(true); 
+  };
+
+  const handleConfirmLogout = async () => {
+    setShowModal(false);
+    await logout();
+    navigate("/");
+  };
+
+  const handleCancelLogout = () => {
+    setShowModal(false);
   };
 
   return (
@@ -40,6 +56,7 @@ export default function DashboardHeader() {
           src={user?.photoURL ?? ""}
           alt="Foto do usuário"
           className="w-12 h-12 rounded-full"
+          referrerPolicy="no-referrer"
         />
         <div className="text-sm">
           <p className="font-title font-bold">{user?.displayName || "Usuário"}</p>
@@ -47,11 +64,18 @@ export default function DashboardHeader() {
       </div>
 
       <button
-        onClick={handleLogout}
+        onClick={handleLogoutClick}
         className="font-button px-4 py-2 bg-white text-blue-600 rounded-lg shadow hover:bg-gray-100"
       >
         Logout
       </button>
+      {showModal && (
+        <ConfirmationModal
+          message="Você tem certeza que deseja sair?"
+          onConfirm={handleConfirmLogout}
+          onCancel={handleCancelLogout}
+        />
+      )}
     </header>
   );
 }

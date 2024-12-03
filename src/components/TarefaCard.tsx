@@ -1,12 +1,4 @@
-interface TarefaCardProps {
-  tasks: Task[];
-}
-
-interface Task {
-  id: number;
-  name: string;
-  status: string;
-}
+import { TarefaCardProps } from "../types";
 
 export default function TarefaCard({ tasks }: TarefaCardProps) {
   return (
@@ -17,8 +9,20 @@ export default function TarefaCard({ tasks }: TarefaCardProps) {
           <li className="text-gray-500">Nenhuma tarefa pendente.</li>
         ) : (
           tasks.map((task) => (
-            <li key={task.id} className="text-gray-700">
-              <span className="font-bold">{task.name}</span> - {task.status}
+            <li
+              key={task.id}
+              className="flex justify-between items-center text-gray-700 border-b border-gray-200 pb-2"
+            >
+              <span className="truncate block font-bold">{task.name}</span>
+              <span
+                className={`${
+                  task.status === "Concluído"
+                    ? "text-green-500"
+                    : "text-red-500"
+                } font-semibold`}
+              >
+                {task.status}
+              </span>
             </li>
           ))
         )}
