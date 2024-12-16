@@ -17,3 +17,10 @@ Projetos.
 Tarefas.
 Finanças.
 Calendário.
+
+#### Tecnologias Utilizadas
+React.
+Tailwind CSS.
+Recharts.
+React Router.
+Firebase.
