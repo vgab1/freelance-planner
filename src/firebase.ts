@@ -8,13 +8,13 @@ import {
 } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC9Mg-NRTvPW-C6FRsygX0exiTwBG4ai9c",
-  authDomain: "freelance-planner.firebaseapp.com",
-  projectId: "freelance-planner",
-  storageBucket: "freelance-planner.firebasestorage.app",
-  messagingSenderId: "486304450231",
-  appId: "1:486304450231:web:ad75ec6cfb55cc6ee46f32",
-  measurementId: "G-H5J70VJ2X4",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
