@@ -26,15 +26,6 @@ export default function DashboardHeader() {
     return () => unsubscribe();
   }, [navigate]);
 
-  // const handleLogout = async () => {
-  //   try {
-  //     await logout();
-  //     navigate("/");
-  //   } catch (error) {
-  //     console.error("Erro ao deslogar:", error);
-  //   }
-  // };
-
   const handleLogoutClick = () => {
     setShowModal(true); 
   };
