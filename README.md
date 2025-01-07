@@ -1,26 +1,20 @@
-# Organizador de Atividades para Freelancers
+# Calculadora de Projetos para Freelancers
 
-Problema: Dificuldade de freelancers em organizar tarefas e finanças
+Problema: Dificuldade de freelancers em calcular quanto cobrar.
 
-Solução: Uma aplicação web que permite gerenciar projetos, tarefas e finanças de forma integrada.
+Solução: Uma aplicação web que permite calcular quanto cobrar por hora, projeto e o retainer.
 
 ## Funcionalidades:
-To-do list personalizável.
-Controle de prazos e entregas.
-Gráficos simples de entradas e saídas financeiras.
-Alertas para vencimentos de contratos ou cobranças pendentes.
+Cobrança por Hora
+Taxa Horária
+Preço do Projeto
+Retainer
 
 ### Estrutura de Páginas:
-Login/Registro.
+Login/Registro com firebase.
 Dashboard.
-Projetos.
-Tarefas.
-Finanças.
-Calendário.
 
 #### Tecnologias Utilizadas
 React.
 Tailwind CSS.
-Recharts.
-React Router.
 Firebase.
