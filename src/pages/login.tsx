@@ -41,8 +41,7 @@ export default function Login() {
           Bem-vindo ao Freelance Planner
         </h1>
         <p className="font-text mb-5 text-center">
-          Uma aplicação web que permite gerenciar projetos, tarefas e finanças
-          de forma integrada.
+          Uma aplicação web que permite calcular quanto cobrar por hora, projeto e o retainer.
         </p>
         <p className="font-text font-bold text-center text-gray-600 mb-4">
           Use a sua conta do Google para acessar.
